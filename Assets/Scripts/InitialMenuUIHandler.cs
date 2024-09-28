@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,15 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InitialMenuUIHandler : MonoBehaviour {
-
     [SerializeField] private GameObject initialScreen;
 
     [SerializeField] private GameObject loadingScreen;
 
     [SerializeField] private Slider loadingSlider;
-    
+
     [SerializeField] private TextMeshProUGUI highestScoreText;
-    
+
     [SerializeField] private TMP_InputField playerNameInputField;
 
     private void Awake() {
@@ -45,17 +43,16 @@ public class InitialMenuUIHandler : MonoBehaviour {
             loadingSlider.value = loadAsync.progress;
             yield return null;
         }
-        
+
         initialScreen.SetActive(true);
         loadingScreen.SetActive(false);
     }
 
     public void ExitGame() {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.ExitPlaymode();
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
             Application.Quit();
-        #endif
+#endif
     }
-    
 }
