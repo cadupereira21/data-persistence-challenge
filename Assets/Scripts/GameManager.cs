@@ -12,7 +12,7 @@ public class GameManager {
 
     public int playerHighestScore;
 
-    public int playerName;
+    public string playerName;
     
     private GameManager() {
         

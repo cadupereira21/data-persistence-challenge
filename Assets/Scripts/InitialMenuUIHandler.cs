@@ -14,12 +14,15 @@ public class InitialMenuUIHandler : MonoBehaviour {
     [SerializeField] private Slider loadingSlider;
     
     [SerializeField] private TextMeshProUGUI highestScoreText;
+    
+    [SerializeField] private TMP_InputField playerNameInputField;
 
     private void Awake() {
         GameManager.instance.LoadGame();
     }
 
     private void Start() {
+        playerNameInputField.text = "";
         initialScreen.SetActive(true);
         loadingScreen.SetActive(false);
         loadingSlider.value = 0;
@@ -29,6 +32,7 @@ public class InitialMenuUIHandler : MonoBehaviour {
     public void StartGame() {
         initialScreen.SetActive(false);
         loadingScreen.SetActive(true);
+        GameManager.instance.playerName = playerNameInputField.text;
         this.StartCoroutine(LoadSceneAsync());
     }
 
