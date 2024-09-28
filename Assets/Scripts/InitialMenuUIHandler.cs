@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,11 +12,18 @@ public class InitialMenuUIHandler : MonoBehaviour {
     [SerializeField] private GameObject loadingScreen;
 
     [SerializeField] private Slider loadingSlider;
+    
+    [SerializeField] private TextMeshProUGUI highestScoreText;
+
+    private void Awake() {
+        GameManager.instance.LoadGame();
+    }
 
     private void Start() {
         initialScreen.SetActive(true);
         loadingScreen.SetActive(false);
         loadingSlider.value = 0;
+        highestScoreText.text = $"Highest Score: {GameManager.instance.playerHighestScore}";
     }
 
     public void StartGame() {
